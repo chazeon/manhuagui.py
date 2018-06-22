@@ -1,7 +1,6 @@
 import json
 from client import MHGClient
 from mhg import MHGComic, MHGVolume
-import lzstring
 import multiprocess.pool
 
 def get_pages(comic: MHGComic):
@@ -18,6 +17,6 @@ if __name__ == '__main__':
     client = MHGClient(opts)
     comic_uri = input('请输入漫画索引页地址: ')
     comic = MHGComic(comic_uri, opts=opts)
-    pool = multiprocess.pool.Pool(3)
+    pool = multiprocess.pool.Pool(1)
     pages = list(get_pages(comic))
     pool.map(retrieve_page, pages)

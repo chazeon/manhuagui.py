@@ -2,5 +2,8 @@
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3452.0 Safari/537.36",
     "image_base": "https://eu.hamreus.com/",
     "chunk_size": 512,
-    "download_dir": "data"
+    "download_dir": "data",
+    "proxy": "http://user:pass@host:port",
+    "sleep": [200, 500],
+    "backoff_factor": 0.3
 }

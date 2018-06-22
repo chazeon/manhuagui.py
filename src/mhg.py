@@ -7,8 +7,6 @@ import json
 import node
 import copy
 import os
-import time
-import random
 
 class MHGComic:
     def __init__(self, uri: str, client: MHGClient = None, opts = None):
@@ -27,8 +25,9 @@ class MHGComic:
         for anchor in anchors:
             link = anchor.get('href')
             volume_name = str(next(anchor.select_one('span').children))
-            yield MHGVolume(urllib.parse.urljoin(self.uri, link), title, volume_name, self.client)
-            time.sleep(random.randrange(5, 2000) / 1000)
+            volume = MHGVolume(urllib.parse.urljoin(self.uri, link), title, volume_name, self.client)
+            print(volume)
+            yield volume
 
 class MHGVolume:
     def __init__(self, uri: str, title: str, volume_name: str, client: MHGClient):
